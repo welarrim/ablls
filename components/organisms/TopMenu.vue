@@ -1,7 +1,7 @@
 <template>
   <el-header>
     <el-menu mode="horizontal">
-      <el-menu-item v-for="(menu, i) in menus" :key="i" :index="i+1" :route="menu.route">
+      <el-menu-item v-for="(menu, i) in menus" :key="i" :index="i.toString()" :route="menu.route">
         {{ $t(menu.title) }}
       </el-menu-item>
     </el-menu>

@@ -1,6 +1,6 @@
 <template>
   <el-container direction="vertical">
-    <Header />
+    <top-menu />
     <el-main>
       <nuxt />
     </el-main>
