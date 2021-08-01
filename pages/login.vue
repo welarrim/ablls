@@ -1,9 +1,10 @@
 <template>
-  <h1>Login</h1>
+  <forms-login />
 </template>
 
 <script>
 export default {
   layout: 'minimal',
+  auth: 'guest',
 }
 </script>
