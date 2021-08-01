@@ -4,13 +4,12 @@
     label-position="top"
     :model="ruleForm"
     :rules="rules"
-    @validate="formValidated"
   >
     <el-form-item :label="$t('form.email.label')" prop="email">
-      <el-input v-model="ruleForm.email" type="email" />
+      <el-input v-model="ruleForm.email" type="email" name="email" />
     </el-form-item>
     <el-form-item :label="$t('form.password.label')" prop="password">
-      <el-input v-model="ruleForm.password" type="password" />
+      <el-input v-model="ruleForm.password" type="password" name="password" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="submitForm('login-form')">
@@ -45,14 +44,8 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           alert('submit!')
-        } else {
-          console.log('error submit!!')
-          return false
         }
       })
-    },
-    formValidated (field, valid) {
-      console.debug(field, valid)
     },
   },
 }
