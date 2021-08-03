@@ -11,7 +11,7 @@
     "lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
     "prepare": "husky install",
     "lint": "npm run lint:js && npm run lint:style",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "lint-staged": {
     "*.{js,vue}": "eslint",
@@ -50,7 +50,6 @@
     "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
-    "vue-i18n-jest": "^1.1.0",
     "vue-jest": "^3.0.4"
   }
 }

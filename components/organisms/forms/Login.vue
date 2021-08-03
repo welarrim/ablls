@@ -23,6 +23,7 @@
 export default {
   data () {
     return {
+      error: false,
       ruleForm: {
         email: '',
         password: '',
@@ -43,7 +44,9 @@ export default {
     submitForm (formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          this.error = false
+        } else {
+          this.error = true
         }
       })
     },

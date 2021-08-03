@@ -1,10 +1,26 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import TopMenu from '@/components/organisms/TopMenu.vue'
-import i18n from '@/test/i18n'
+import $t from '@/test/i18n'
+
+let wrapper
+
+beforeEach(() => {
+  wrapper = shallowMount(TopMenu, {
+    propsData: {},
+    mocks: {
+      $t,
+    },
+    stubs: {},
+    methods: {},
+  })
+})
+
+afterEach(() => {
+  wrapper.destroy()
+})
 
 describe('TopMenu', () => {
-  test('is the TopMenu', () => {
-    const wrapper = mount(TopMenu, i18n)
-    expect(wrapper.vm).toBeTruthy()
+  test('is a Vue instance', () => {
+    expect(wrapper.isVueInstance).toBeTruthy()
   })
 })

@@ -13,8 +13,4 @@ const $t = (path) => {
   }
   return current
 }
-export default {
-  mocks: {
-    $t,
-  },
-}
+export default $t
