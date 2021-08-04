@@ -9,11 +9,9 @@
   </el-main>
 </template>
 
-<style>
-  body {
-    margin: 0;
-  }
+<style scoped>
   main.el-main {
+    margin: -8px;
     padding: 0;
   }
   .h-full {
