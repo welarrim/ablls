@@ -1,4 +1,8 @@
 export default {
+  publicRuntimeConfig: {
+    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+  },
+  privateRuntimeConfig: {},
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
@@ -28,6 +32,7 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '@/plugins/element-ui',
+    '@/plugins/mixins',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -54,8 +59,8 @@ export default {
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
     'nuxt-i18n',
-    '@nuxtjs/auth-next',
     '@nuxtjs/firebase',
+    '@nuxtjs/toast',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -116,16 +121,10 @@ export default {
     },
   },
 
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: 'login', method: 'post', propertyName: 'data.token' },
-          user: { url: 'me', method: 'get', propertyName: 'data' },
-          logout: false,
-        },
-      },
-    },
+  toast: {
+    position: 'bottom-right',
+    duration: 5000,
+    keepOnHover: true,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build

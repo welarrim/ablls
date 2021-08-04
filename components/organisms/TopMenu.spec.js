@@ -1,11 +1,11 @@
-import { shallowMount } from '@vue/test-utils'
+import { mount } from '@vue/test-utils'
 import TopMenu from '@/components/organisms/TopMenu.vue'
 import $t from '@/test/i18n'
 
 let wrapper
 
 beforeEach(() => {
-  wrapper = shallowMount(TopMenu, {
+  wrapper = mount(TopMenu, {
     propsData: {},
     mocks: {
       $t,

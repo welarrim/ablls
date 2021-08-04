@@ -1,28 +1,33 @@
 export const state = () => ({
-  user: {},
+  user: null,
 })
 
 export const mutations = {
-  ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser, claims }) {
-    console.debug('ON_AUTH_STATE_CHANGED_MUTATION', authUser, claims)
+  SET_USER (state, user) {
+    state.user = user
+  },
+  UNSET_USER (state) {
+    state.user = null
+  },
+  ON_AUTH_STATE_CHANGED_MUTATION (state, { authUser }) {
     if (!authUser) {
-      // claims = null
-      // perform logout operations
+      state.user = null
     } else {
-      const { uid, email, emailVerified } = authUser
-      state.user = { uid, email, emailVerified }
+      const { uid, displayName, email, photoURL, phoneNumber, emailVerified } = authUser
+      state.user = { uid, displayName, email, photoURL, phoneNumber, emailVerified }
     }
   },
 }
 
 export const actions = {
-  onAuthStateChangedAction ({ commit }, { authUser, claims }) {
-    console.debug('onAuthStateChangedAction', authUser, claims)
+  onAuthStateChangedAction ({ commit }, { authUser }) {
     if (!authUser) {
-      // claims = null
-      // Perform logout operations
+      commit('UNSET_USER')
     } else {
-      // Do something with the authUser and the claims object...
+      const { uid, displayName, email, photoURL, phoneNumber, emailVerified } = authUser
+      // const token = await authUser.getIdToken()
+
+      commit('SET_USER', { uid, displayName, email, photoURL, phoneNumber, emailVerified })
     }
   },
 }

@@ -11,9 +11,12 @@
     <el-form-item :label="$t('form.password.label')" prop="password">
       <el-input v-model="ruleForm.password" type="password" name="password" />
     </el-form-item>
+    <el-form-item :label="$t('form.passwordConfirm.label')" prop="passwordConfirm">
+      <el-input v-model="ruleForm.passwordConfirm" type="password" name="passwordConfirm" />
+    </el-form-item>
     <el-form-item>
-      <el-button type="primary" :loading="isLoading" @click="signIn()">
-        {{ $t('btn.login') }}
+      <el-button type="primary" :loading="isLoading" @click="signUp">
+        {{ $t('btn.register') }}
       </el-button>
     </el-form-item>
   </el-form>
@@ -22,11 +25,19 @@
 <script>
 export default {
   data () {
+    const passwordConfirm = (rule, value, callback) => {
+      if (value !== this.ruleForm.password) {
+        callback(new Error(this.$t('form.passwordConfirm.rule.identique')))
+      } else {
+        callback()
+      }
+    }
     return {
-      formRef: 'login-form',
+      formRef: 'register-form',
       ruleForm: {
         email: '',
         password: '',
+        passwordConfirm: '',
       },
       rules: {
         email: [
@@ -37,34 +48,37 @@ export default {
           { required: true, message: this.$t('form.password.rule.required'), trigger: 'blur' },
           { min: 6, message: this.$t('form.password.rule.min'), trigger: 'blur' },
         ],
+        passwordConfirm: [
+          { required: true, validator: passwordConfirm, trigger: 'blur' },
+        ],
       },
     }
   },
   methods: {
-    signIn () {
+    signUp () {
       this.$refs[this.formRef].validate(async (valid) => {
         if (valid) {
           this.startLoading()
           try {
-            // Sign in
+            // Create user
             const { email, password } = this.ruleForm
-            const response = await this.$fire.auth.signInWithEmailAndPassword(email, password)
+            const response = await this.$fire.auth.createUserWithEmailAndPassword(email, password)
 
-            if (!response.user.emailVerified) {
-              setTimeout(() => {
-                this.$fire.auth.signOut()
-                this.$toast.error(this.$t('alert.login.emailNotVerified'))
-                this.stopLoading()
-              }, 500)
-              return false
-            }
+            // Send Email Verification
+            response.user.sendEmailVerification({
+              url: this.$config.baseUrl,
+            })
 
-            // Wait for redirection
-            setTimeout(() => {
-              // Redirect to Home
-              this.$router.push('/')
-              this.stopLoading()
-            }, 500)
+            // Logout User
+            this.$fire.auth.signOut()
+
+            // Display message
+            this.$toast.success(this.$t('alert.register.success'))
+
+            // Redirect to login
+            this.$router.push('/login')
+
+            this.stopLoading()
           } catch (error) {
             this.displayError(error)
             this.stopLoading()

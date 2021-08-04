@@ -1,11 +1,11 @@
 import { mount } from '@vue/test-utils'
-import Login from '@/components/organisms/forms/Login.vue'
+import Register from '@/components/organisms/forms/Register.vue'
 import $t from '@/test/i18n'
 
 let wrapper
 
 beforeEach(() => {
-  wrapper = mount(Login, {
+  wrapper = mount(Register, {
     propsData: {},
     mocks: {
       $t,
@@ -19,7 +19,7 @@ afterEach(() => {
   wrapper.destroy()
 })
 
-describe('Organisms Forms Login', () => {
+describe('Organisms Forms Register', () => {
   test('is a Vue instance', () => {
     expect(wrapper.isVueInstance).toBeTruthy()
   })
@@ -27,10 +27,12 @@ describe('Organisms Forms Login', () => {
   test('has all elements', () => {
     const email = wrapper.find('input[name=email]')
     const password = wrapper.find('input[name=password]')
+    const passwordConfirm = wrapper.find('input[name=passwordConfirm]')
     const button = wrapper.find('button[type=button]')
     expect(email.exists()).toBe(true)
     expect(password.exists()).toBe(true)
+    expect(passwordConfirm.exists()).toBe(true)
     expect(button.exists()).toBe(true)
-    expect(button.text()).toBe($t('btn.login'))
+    expect(button.text()).toBe($t('btn.register'))
   })
 })
