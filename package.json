@@ -23,7 +23,7 @@
     "@nuxtjs/firebase": "^7.6.1",
     "@nuxtjs/pwa": "^3.3.5",
     "core-js": "^3.16.0",
-    "element-ui": "^2.15.2",
+    "element-ui": "^2.15.4",
     "firebase": "^8.8.1",
     "nuxt": "^2.15.7",
     "nuxt-i18n": "^6.28.0"
