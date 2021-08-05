@@ -1,6 +1,6 @@
 <template>
   <el-header>
-    <el-menu mode="horizontal">
+    <el-menu mode="horizontal" :default-active="active.toString()">
       <el-menu-item v-for="(menu, i) in menus" :key="i" :index="i.toString()" :route="menu.route">
         {{ $t(menu.title) }}
       </el-menu-item>
@@ -15,6 +15,7 @@
 export default {
   data () {
     return {
+      active: '',
       menus: [
         {
           title: 'menu.home',
@@ -22,6 +23,9 @@ export default {
         },
       ],
     }
+  },
+  mounted () {
+    this.active = this.menus.findIndex(menu => menu.route === this.$nuxt.$route.path)
   },
   methods: {
     async logout () {
