@@ -9,6 +9,11 @@ beforeEach(() => {
     propsData: {},
     mocks: {
       $t,
+      $nuxt: {
+        $route: {
+          path: null,
+        },
+      },
     },
     stubs: {},
     methods: {},
