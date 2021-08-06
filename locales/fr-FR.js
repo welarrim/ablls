@@ -2,10 +2,12 @@ export default {
   menu: {
     home: 'Accueil',
     logout: 'Se déconnecter',
+    childs: 'Enfants',
   },
   title: {
     login: 'Se connecter',
     register: 'S\'inscrire',
+    childs: 'Enfants',
   },
   link: {
     login: 'Vous avez déjà un compte? Connectez-vous',
@@ -55,4 +57,13 @@ export default {
       unknown: 'Une erreur inconnue est survenu',
     },
   },
+  firstName: 'Prénom',
+  lastName: 'Nom',
+  sexe: 'Sexe',
+  birthDate: 'Date de naissance',
+  observation: 'Observation',
+  boy: 'Garçon',
+  girl: 'Fille',
+  yes: 'Oui',
+  no: 'Non',
 }
