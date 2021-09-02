@@ -24,6 +24,10 @@ export default {
           title: 'menu.childs',
           route: '/child',
         },
+        {
+          title: 'menu.skills',
+          route: '/skill',
+        },
       ],
     }
   },

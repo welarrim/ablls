@@ -3,11 +3,13 @@ export default {
     home: 'Accueil',
     logout: 'Se déconnecter',
     childs: 'Enfants',
+    skills: 'Compétences',
   },
   title: {
     login: 'Se connecter',
     register: 'S\'inscrire',
     childs: 'Enfants',
+    skills: 'Compétences',
   },
   link: {
     login: 'Vous avez déjà un compte? Connectez-vous',
@@ -66,6 +68,18 @@ export default {
       boy: 'Garçon',
       girl: 'Fille',
     },
+    letter: {
+      label: 'Lettre',
+      rule: {
+        required: 'Le champs lettre est requis',
+      },
+    },
+    name: {
+      label: 'Nom',
+      rule: {
+        required: 'Le champs nom est requis',
+      },
+    },
   },
   btn: {
     login: 'Connexion',
@@ -96,6 +110,11 @@ export default {
         success: 'L\'enfant a été supprimé avec succès',
       },
     },
+    skills: {
+      delete: {
+        success: 'La compétence a été supprimée avec succès',
+      },
+    },
   },
   modal: {
     child: {
@@ -106,9 +125,19 @@ export default {
         title: 'Modifier les informations d\'un enfant',
       },
     },
+    skill: {
+      add: {
+        title: 'Ajouter une compétence',
+      },
+      edit: {
+        title: 'Modifier les informations d\'une compétence',
+      },
+    },
   },
   firstname: 'Prénom',
   lastname: 'Nom',
+  letter: 'Lettre',
+  name: 'Nom',
   gender: 'Genre',
   birthdate: 'Date de naissance',
   observation: 'Observation',
