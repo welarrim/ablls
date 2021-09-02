@@ -34,10 +34,45 @@ export default {
         identique: 'Ce champs doit être identique au mot de passe',
       },
     },
+    firstname: {
+      label: 'Prénom',
+      rule: {
+        required: 'Le champs prénom est requis',
+      },
+    },
+    lastname: {
+      label: 'Nom',
+      rule: {
+        required: 'Le champs nom est requis',
+      },
+    },
+    gender: {
+      label: 'Genre',
+      rule: {
+        required: 'Le champs genre est requis',
+      },
+    },
+    birthdate: {
+      label: 'Date de naissance',
+      placeholder: 'Choisissez la date de naissance',
+      rule: {
+        required: 'Le champs date de naissance est requis',
+      },
+    },
+    observation: {
+      label: 'Observation',
+    },
+    options: {
+      boy: 'Garçon',
+      girl: 'Fille',
+    },
   },
   btn: {
     login: 'Connexion',
     register: 'Inscription',
+    edit: 'Editer',
+    remove: 'Supprimer',
+    add: 'Ajouter',
   },
   alert: {
     firebase: {
@@ -56,11 +91,26 @@ export default {
     error: {
       unknown: 'Une erreur inconnue est survenu',
     },
+    childs: {
+      delete: {
+        success: 'L\'enfant a été supprimé avec succès',
+      },
+    },
   },
-  firstName: 'Prénom',
-  lastName: 'Nom',
-  sexe: 'Sexe',
-  birthDate: 'Date de naissance',
+  modal: {
+    child: {
+      add: {
+        title: 'Ajouter un enfant',
+      },
+      edit: {
+        title: 'Modifier les informations d\'un enfant',
+      },
+    },
+  },
+  firstname: 'Prénom',
+  lastname: 'Nom',
+  gender: 'Genre',
+  birthdate: 'Date de naissance',
   observation: 'Observation',
   boy: 'Garçon',
   girl: 'Fille',

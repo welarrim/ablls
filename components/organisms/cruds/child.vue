@@ -2,27 +2,27 @@
   <el-table
     v-loading="loading"
     :data="childs"
-    :default-sort="{prop: 'firstName', order: 'ascending'}"
+    :default-sort="{prop: 'firstname', order: 'ascending'}"
   >
     <el-table-column
-      prop="firstName"
-      :label="$t('firstName')"
+      prop="firstname"
+      :label="$t('firstname')"
       sortable
     />
     <el-table-column
-      prop="lastName"
-      :label="$t('lastName')"
+      prop="lastname"
+      :label="$t('lastname')"
       sortable
     />
     <el-table-column
-      prop="sexe"
-      :label="$t('sexe')"
+      prop="gender"
+      :label="$t('gender')"
       sortable
-      :formatter="getSexe"
+      :formatter="getGender"
     />
     <el-table-column
-      prop="birthDate"
-      :label="$t('birthDate')"
+      prop="birthdate"
+      :label="$t('birthdate')"
       sortable
       :formatter="getBirthDate"
     />
@@ -32,6 +32,19 @@
       sortable
       :formatter="getObservation"
     />
+    <el-table-column
+      fixed="right"
+      label="Opérations"
+    >
+      <template slot-scope="scope">
+        <el-button size="mini" @click="$emit('editBtnClicked', scope)">
+          {{ $t('btn.edit') }}
+        </el-button>
+        <el-button size="mini" type="danger" @click="remove(scope)">
+          {{ $t('btn.remove') }}
+        </el-button>
+      </template>
+    </el-table-column>
   </el-table>
 </template>
 
@@ -52,14 +65,24 @@ export default {
     },
   },
   methods: {
-    getSexe (row) {
-      return this.$t(row.sexe)
+    getGender (row) {
+      return this.$t(row.gender)
     },
     getBirthDate (row) {
-      return new Date(row.birthDate).toLocaleDateString('fr-FR')
+      const birthdate = row.birthdate.seconds ? row.birthdate.seconds * 1000 : row.birthdate
+      return new Date(birthdate).toLocaleDateString('fr-FR')
     },
     getObservation (row) {
       return row.observation ? this.$t('yes') : this.$t('no')
+    },
+    async edit (scope) {
+      const row = scope.row
+      await this.$store.dispatch('childs/edit', row)
+    },
+    async remove (scope) {
+      const row = scope.row
+      await this.$store.dispatch('childs/remove', row)
+      this.$toast.success(this.$t('alert.childs.delete.success'))
     },
   },
 }
