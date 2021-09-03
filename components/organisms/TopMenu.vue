@@ -28,6 +28,10 @@ export default {
           title: 'menu.skills',
           route: '/skill',
         },
+        {
+          title: 'menu.tasks',
+          route: '/task',
+        },
       ],
     }
   },

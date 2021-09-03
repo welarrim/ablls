@@ -12,7 +12,7 @@
       <el-input v-model="ruleForm.name" type="text" name="name" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" :loading="isLoading" @click="editSkill()">
+      <el-button type="primary" :loading="isLoading" @click="editSkill">
         {{ $t('btn.edit') }}
       </el-button>
     </el-form-item>

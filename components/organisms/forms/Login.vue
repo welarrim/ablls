@@ -12,7 +12,7 @@
       <el-input v-model="ruleForm.password" type="password" name="password" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" :loading="isLoading" @click="signIn()">
+      <el-button type="primary" :loading="isLoading" @click="signIn">
         {{ $t('btn.login') }}
       </el-button>
     </el-form-item>

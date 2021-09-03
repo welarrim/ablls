@@ -24,7 +24,7 @@
       <el-input v-model="ruleForm.observation" type="textarea" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" :loading="isLoading" @click="editChild()">
+      <el-button type="primary" :loading="isLoading" @click="editChild">
         {{ $t('btn.edit') }}
       </el-button>
     </el-form-item>

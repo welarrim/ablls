@@ -4,12 +4,14 @@ export default {
     logout: 'Se déconnecter',
     childs: 'Enfants',
     skills: 'Compétences',
+    tasks: 'Tâches',
   },
   title: {
     login: 'Se connecter',
     register: 'S\'inscrire',
     childs: 'Enfants',
     skills: 'Compétences',
+    tasks: 'Tâches',
   },
   link: {
     login: 'Vous avez déjà un compte? Connectez-vous',
@@ -61,6 +63,42 @@ export default {
         required: 'Le champs date de naissance est requis',
       },
     },
+    order: {
+      label: 'Ordre',
+      rule: {
+        required: 'Le champs ordre est requis',
+      },
+    },
+    score: {
+      label: 'Score',
+      rule: {
+        required: 'Le champs score est requis',
+      },
+    },
+    goal: {
+      label: 'Objectif',
+      rule: {
+        required: 'Le champs objectif est requis',
+      },
+    },
+    question: {
+      label: 'Question',
+      rule: {
+        required: 'Le champs question est requis',
+      },
+    },
+    example: {
+      label: 'Exemple',
+      rule: {
+        required: 'Le champs exemple est requis',
+      },
+    },
+    criteria: {
+      label: 'Critère',
+      rule: {
+        required: 'Le champs critère est requis',
+      },
+    },
     observation: {
       label: 'Observation',
     },
@@ -78,6 +116,12 @@ export default {
       label: 'Nom',
       rule: {
         required: 'Le champs nom est requis',
+      },
+    },
+    skill: {
+      label: 'Compétence',
+      rule: {
+        required: 'Le champs compétence est requis',
       },
     },
   },
@@ -115,6 +159,11 @@ export default {
         success: 'La compétence a été supprimée avec succès',
       },
     },
+    tasks: {
+      delete: {
+        success: 'La tâche a été supprimée avec succès',
+      },
+    },
   },
   modal: {
     child: {
@@ -133,6 +182,14 @@ export default {
         title: 'Modifier les informations d\'une compétence',
       },
     },
+    task: {
+      add: {
+        title: 'Ajouter une tâche',
+      },
+      edit: {
+        title: 'Modifier les informations d\'une tâche',
+      },
+    },
   },
   firstname: 'Prénom',
   lastname: 'Nom',
@@ -145,4 +202,7 @@ export default {
   girl: 'Fille',
   yes: 'Oui',
   no: 'Non',
+  order: 'Ordre',
+  score: 'Score',
+  skill: 'Compétence',
 }
