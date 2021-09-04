@@ -16,13 +16,13 @@ export const mutations = {
   UNSET_SELECTED (state) {
     state.selected = null
   },
-  ADD (state, task) {
-    state.list.push(task)
+  ADD (state, evaluation) {
+    state.list.push(evaluation)
   },
-  EDIT (state, task) {
-    const index = state.list.findIndex(row => row.id === task.id)
+  EDIT (state, evaluation) {
+    const index = state.list.findIndex(row => row.id === evaluation.id)
     if (index > -1) {
-      state.list.splice(index, 1, task)
+      state.list.splice(index, 1, evaluation)
     }
   },
   REMOVE (state, payload) {
@@ -37,11 +37,11 @@ export const actions = {
   async fetch ({ commit }) {
     const result = []
     try {
-      const snapshot = await this.$fire.firestore.collection('tasks').get()
+      const snapshot = await this.$fire.firestore.collection('evaluations').get()
       snapshot.forEach((doc) => {
-        const task = doc.data()
-        task.id = doc.id
-        result.push(task)
+        const evaluation = doc.data()
+        evaluation.id = doc.id
+        result.push(evaluation)
       })
       commit('SET_LIST', result)
     } catch (error) {
@@ -51,17 +51,12 @@ export const actions = {
   async add ({ commit }, payload) {
     try {
       const data = {
-        skillId: payload.skillId,
-        order: payload.order,
-        score: payload.score,
-        name: payload.name,
-        goal: payload.goal,
-        question: payload.question,
-        example: payload.example,
-        criteria: payload.criteria,
-        observation: payload.observation,
+        childId: payload.childId,
+        date: payload.date,
+        statut: payload.statut,
+        results: payload.results,
       }
-      const result = await this.$fire.firestore.collection('tasks').add(data)
+      const result = await this.$fire.firestore.collection('evaluations').add(data)
       data.id = result.id
       commit('ADD', data)
     } catch (error) {
@@ -71,17 +66,12 @@ export const actions = {
   async edit ({ commit }, payload) {
     try {
       const data = {
-        skillId: payload.skillId,
-        order: payload.order,
-        score: payload.score,
-        name: payload.name,
-        goal: payload.goal,
-        question: payload.question,
-        example: payload.example,
-        criteria: payload.criteria,
-        observation: payload.observation,
+        childId: payload.childId,
+        date: payload.date,
+        statut: payload.statut,
+        results: payload.results,
       }
-      await this.$fire.firestore.collection('tasks').doc(payload.id).set(data)
+      await this.$fire.firestore.collection('evaluations').doc(payload.id).set(data)
       data.id = payload.id
       commit('EDIT', data)
     } catch (error) {
@@ -90,7 +80,7 @@ export const actions = {
   },
   async remove ({ commit }, payload) {
     try {
-      await this.$fire.firestore.collection('tasks').doc(payload.id).delete()
+      await this.$fire.firestore.collection('evaluations').doc(payload.id).delete()
       commit('REMOVE', payload)
     } catch (error) {
       console.error(error)

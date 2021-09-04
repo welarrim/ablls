@@ -3,6 +3,12 @@ export const state = () => ({
   selected: null,
 })
 
+export const getters = {
+  byId: state => (id) => {
+    return state.list.find(row => row.id === id)
+  },
+}
+
 export const mutations = {
   SET_LIST (state, list) {
     state.list = list

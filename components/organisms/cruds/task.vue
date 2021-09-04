@@ -5,7 +5,7 @@
     :default-sort="{prop: 'order', order: 'ascending'}"
   >
     <el-table-column
-      prop="skill"
+      prop="skillId"
       :label="$t('skill')"
       sortable
       :formatter="getSkill"
@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     getSkill (row) {
-      const skill = this.$store.getters['skills/byId'](row.skill)
+      const skill = this.$store.getters['skills/byId'](row.skillId)
       return skill ? `${skill.letter} - ${skill.name}` : ''
     },
     async edit (scope) {

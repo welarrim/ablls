@@ -32,6 +32,10 @@ export default {
           title: 'menu.tasks',
           route: '/task',
         },
+        {
+          title: 'menu.evaluations',
+          route: '/evaluation',
+        },
       ],
     }
   },

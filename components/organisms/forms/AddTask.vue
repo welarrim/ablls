@@ -5,8 +5,8 @@
     :model="ruleForm"
     :rules="rules"
   >
-    <el-form-item :label="$t('form.skill.label')" prop="skill">
-      <el-select v-model="ruleForm.skill">
+    <el-form-item :label="$t('form.skill.label')" prop="skillId">
+      <el-select v-model="ruleForm.skillId">
         <el-option v-for="skill in skills" :key="skill.id" :label="skill.name" :value="skill.id" />
       </el-select>
     </el-form-item>
@@ -48,7 +48,7 @@ export default {
     return {
       formRef: 'add-task-form',
       ruleForm: {
-        skill: '',
+        skillId: '',
         order: 0,
         score: 0,
         name: '',
@@ -59,7 +59,7 @@ export default {
         observation: '',
       },
       rules: {
-        skill: [
+        skillId: [
           { required: true, message: this.$t('form.skill.rule.required'), trigger: 'blur' },
         ],
         order: [
@@ -104,7 +104,7 @@ export default {
     },
     clearFields () {
       this.ruleForm = {
-        skill: '',
+        skillId: '',
         order: 0,
         score: 0,
         name: '',

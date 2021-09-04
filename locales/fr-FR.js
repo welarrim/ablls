@@ -5,6 +5,7 @@ export default {
     childs: 'Enfants',
     skills: 'Compétences',
     tasks: 'Tâches',
+    evaluations: 'Evaluations',
   },
   title: {
     login: 'Se connecter',
@@ -12,6 +13,7 @@ export default {
     childs: 'Enfants',
     skills: 'Compétences',
     tasks: 'Tâches',
+    evaluations: 'Evaluations',
   },
   link: {
     login: 'Vous avez déjà un compte? Connectez-vous',
@@ -124,6 +126,19 @@ export default {
         required: 'Le champs compétence est requis',
       },
     },
+    child: {
+      label: 'Enfant',
+      rule: {
+        required: 'Le champs enfant est requis',
+      },
+    },
+    date: {
+      label: 'Date',
+      placeholder: 'Choisissez la date de l\'évaluation',
+      rule: {
+        required: 'Le champs date est requis',
+      },
+    },
   },
   btn: {
     login: 'Connexion',
@@ -164,6 +179,11 @@ export default {
         success: 'La tâche a été supprimée avec succès',
       },
     },
+    evaluations: {
+      delete: {
+        success: 'L\'évaluation a été supprimée avec succès',
+      },
+    },
   },
   modal: {
     child: {
@@ -190,6 +210,14 @@ export default {
         title: 'Modifier les informations d\'une tâche',
       },
     },
+    evaluation: {
+      add: {
+        title: 'Ajouter une évaluation',
+      },
+      edit: {
+        title: 'Modifier les informations d\'une évaluation',
+      },
+    },
   },
   firstname: 'Prénom',
   lastname: 'Nom',
@@ -205,4 +233,9 @@ export default {
   order: 'Ordre',
   score: 'Score',
   skill: 'Compétence',
+  date: 'Date',
+  statut: 'Etat',
+  child: 'Enfant',
+  pending: 'En cours',
+  done: 'Terminé',
 }
