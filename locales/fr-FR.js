@@ -14,6 +14,7 @@ export default {
     skills: 'Compétences',
     tasks: 'Tâches',
     evaluations: 'Evaluations',
+    result: 'Résultat',
   },
   link: {
     login: 'Vous avez déjà un compte? Connectez-vous',
@@ -147,6 +148,7 @@ export default {
     remove: 'Supprimer',
     add: 'Ajouter',
     start: 'Commencer',
+    result: 'Résultat',
   },
   alert: {
     firebase: {
