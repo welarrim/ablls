@@ -11,13 +11,10 @@
       </el-select>
     </el-form-item>
     <el-form-item :label="$t('form.order.label')" prop="order">
-      <el-input v-model="ruleForm.order" type="number" name="order" autofocus />
+      <el-input-number v-model="ruleForm.order" :min="1" name="order" />
     </el-form-item>
     <el-form-item :label="$t('form.name.label')" prop="name">
       <el-input v-model="ruleForm.name" type="text" name="name" />
-    </el-form-item>
-    <el-form-item :label="$t('form.score.label')" prop="score">
-      <el-input v-model="ruleForm.score" type="number" name="score" />
     </el-form-item>
     <el-form-item :label="$t('form.goal.label')">
       <el-input v-model="ruleForm.goal" type="textarea" />
@@ -25,14 +22,17 @@
     <el-form-item :label="$t('form.question.label')">
       <el-input v-model="ruleForm.question" type="textarea" />
     </el-form-item>
-    <el-form-item :label="$t('form.example.label')">
-      <el-input v-model="ruleForm.example" type="textarea" />
+    <el-form-item :label="$t('form.examples.label')">
+      <el-input v-model="ruleForm.examples" type="textarea" />
     </el-form-item>
-    <el-form-item :label="$t('form.criteria.label')">
-      <el-input v-model="ruleForm.criteria" type="textarea" />
+    <el-form-item :label="$t('form.score.label')" prop="score">
+      <el-input-number v-model="ruleForm.score" :min="1" name="score" @change="updateCriterias" />
     </el-form-item>
-    <el-form-item :label="$t('form.observation.label')">
-      <el-input v-model="ruleForm.observation" type="textarea" />
+    <el-form-item :label="$t('form.criterias.label')">
+      <el-input v-for="(criteria, index) in ruleForm.criterias" :key="index" v-model="criteria.value" type="text" />
+    </el-form-item>
+    <el-form-item :label="$t('form.observations.label')">
+      <el-input v-model="ruleForm.observations" type="textarea" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" :loading="isLoading" @click="addTask">
@@ -49,14 +49,14 @@ export default {
       formRef: 'add-task-form',
       ruleForm: {
         skillId: '',
-        order: 0,
-        score: 0,
+        order: 1,
+        score: 1,
         name: '',
         goal: '',
         question: '',
-        example: '',
-        criteria: '',
-        observation: '',
+        examples: '',
+        criterias: [{ score: 0, value: '0 = ' }, { score: 1, value: '1 = ' }],
+        observations: '',
       },
       rules: {
         skillId: [
@@ -83,6 +83,12 @@ export default {
     },
   },
   methods: {
+    updateCriterias () {
+      this.ruleForm.criterias = []
+      for (let i = 0; i <= this.ruleForm.score; i++) {
+        this.ruleForm.criterias.push({ score: i, value: `${i} = ` })
+      }
+    },
     addTask () {
       this.$refs[this.formRef].validate(async (valid) => {
         if (valid) {
@@ -105,14 +111,14 @@ export default {
     clearFields () {
       this.ruleForm = {
         skillId: '',
-        order: 0,
-        score: 0,
+        order: 1,
+        score: 1,
         name: '',
         goal: '',
         question: '',
-        example: '',
-        criteria: '',
-        observation: '',
+        examples: '',
+        criterias: [{ score: 0, value: '0 = ' }, { score: 1, value: '1 = ' }],
+        observations: '',
       }
     },
   },

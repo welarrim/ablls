@@ -60,8 +60,8 @@ export const actions = {
         letter: payload.letter,
         name: payload.name,
       }
-      const result = await this.$fire.firestore.collection('skills').add(data)
-      data.id = result.id
+      await this.$fire.firestore.collection('skills').doc(payload.letter).set(data)
+      data.id = payload.letter
       commit('ADD', data)
     } catch (error) {
       console.error(error)
@@ -73,7 +73,7 @@ export const actions = {
         letter: payload.letter,
         name: payload.name,
       }
-      await this.$fire.firestore.collection('skills').doc(payload.id).set(data)
+      await this.$fire.firestore.collection('skills').doc(payload.letter).set(data)
       data.id = payload.id
       commit('EDIT', data)
     } catch (error) {

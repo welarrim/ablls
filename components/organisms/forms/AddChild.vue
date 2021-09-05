@@ -20,8 +20,8 @@
     <el-form-item :label="$t('form.birthdate.label')" prop="birthdate">
       <el-date-picker v-model="ruleForm.birthdate" type="date" :placeholder="$t('form.birthdate.placeholder')" />
     </el-form-item>
-    <el-form-item :label="$t('form.observation.label')">
-      <el-input v-model="ruleForm.observation" type="textarea" />
+    <el-form-item :label="$t('form.observations.label')">
+      <el-input v-model="ruleForm.observations" type="textarea" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" :loading="isLoading" @click="addChild">
@@ -41,7 +41,7 @@ export default {
         lastname: '',
         gender: 'boy',
         birthdate: '',
-        observation: '',
+        observations: '',
       },
       rules: {
         firstname: [
@@ -85,7 +85,7 @@ export default {
         lastname: '',
         gender: 'boy',
         birthdate: '',
-        observation: '',
+        observations: '',
       }
     },
   },

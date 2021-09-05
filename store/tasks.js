@@ -3,6 +3,12 @@ export const state = () => ({
   selected: null,
 })
 
+export const getters = {
+  byId: state => (id) => {
+    return state.list.find(row => row.id === id)
+  },
+}
+
 export const mutations = {
   SET_LIST (state, list) {
     state.list = list
@@ -57,12 +63,12 @@ export const actions = {
         name: payload.name,
         goal: payload.goal,
         question: payload.question,
-        example: payload.example,
-        criteria: payload.criteria,
-        observation: payload.observation,
+        examples: payload.examples,
+        criterias: payload.criterias,
+        observations: payload.observations,
       }
-      const result = await this.$fire.firestore.collection('tasks').add(data)
-      data.id = result.id
+      await this.$fire.firestore.collection('tasks').doc(payload.skillId + payload.order).set(data)
+      data.id = payload.skillId + payload.order
       commit('ADD', data)
     } catch (error) {
       console.error(error)
@@ -77,12 +83,12 @@ export const actions = {
         name: payload.name,
         goal: payload.goal,
         question: payload.question,
-        example: payload.example,
-        criteria: payload.criteria,
-        observation: payload.observation,
+        examples: payload.examples,
+        criterias: payload.criterias,
+        observations: payload.observations,
       }
-      await this.$fire.firestore.collection('tasks').doc(payload.id).set(data)
-      data.id = payload.id
+      await this.$fire.firestore.collection('tasks').doc(payload.skillId + payload.order).set(data)
+      data.id = payload.skillId + payload.order
       commit('EDIT', data)
     } catch (error) {
       console.error(error)

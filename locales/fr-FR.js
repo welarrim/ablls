@@ -89,20 +89,20 @@ export default {
         required: 'Le champs question est requis',
       },
     },
-    example: {
-      label: 'Exemple',
+    examples: {
+      label: 'Exemples',
       rule: {
-        required: 'Le champs exemple est requis',
+        required: 'Le champs exemples est requis',
       },
     },
-    criteria: {
-      label: 'Critère',
+    criterias: {
+      label: 'Critères',
       rule: {
-        required: 'Le champs critère est requis',
+        required: 'Le champs critères est requis',
       },
     },
-    observation: {
-      label: 'Observation',
+    observations: {
+      label: 'Observations',
     },
     options: {
       boy: 'Garçon',
@@ -225,7 +225,7 @@ export default {
   name: 'Nom',
   gender: 'Genre',
   birthdate: 'Date de naissance',
-  observation: 'Observation',
+  observations: 'Observations',
   boy: 'Garçon',
   girl: 'Fille',
   yes: 'Oui',
@@ -234,8 +234,16 @@ export default {
   score: 'Score',
   skill: 'Compétence',
   date: 'Date',
-  statut: 'Etat',
+  status: 'Etat',
   child: 'Enfant',
   pending: 'En cours',
   done: 'Terminé',
+  next: 'Suivant',
+  task: {
+    goal: 'Objectif de la tâche',
+    question: 'Question',
+    examples: 'Exemples',
+    criterias: 'Critères',
+    observations: 'Observations',
+  },
 }

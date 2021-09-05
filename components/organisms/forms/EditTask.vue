@@ -5,19 +5,8 @@
     :model="ruleForm"
     :rules="rules"
   >
-    <el-form-item :label="$t('form.skill.label')" prop="skillId">
-      <el-select v-model="ruleForm.skillId">
-        <el-option v-for="skill in skills" :key="skill.id" :label="skill.name" :value="skill.id" />
-      </el-select>
-    </el-form-item>
-    <el-form-item :label="$t('form.order.label')" prop="order">
-      <el-input v-model="ruleForm.order" type="number" name="order" autofocus />
-    </el-form-item>
     <el-form-item :label="$t('form.name.label')" prop="name">
       <el-input v-model="ruleForm.name" type="text" name="name" />
-    </el-form-item>
-    <el-form-item :label="$t('form.score.label')" prop="score">
-      <el-input v-model="ruleForm.score" type="number" name="score" />
     </el-form-item>
     <el-form-item :label="$t('form.goal.label')">
       <el-input v-model="ruleForm.goal" type="textarea" />
@@ -25,14 +14,17 @@
     <el-form-item :label="$t('form.question.label')">
       <el-input v-model="ruleForm.question" type="textarea" />
     </el-form-item>
-    <el-form-item :label="$t('form.example.label')">
-      <el-input v-model="ruleForm.example" type="textarea" />
+    <el-form-item :label="$t('form.examples.label')">
+      <el-input v-model="ruleForm.examples" type="textarea" />
     </el-form-item>
-    <el-form-item :label="$t('form.criteria.label')">
-      <el-input v-model="ruleForm.criteria" type="textarea" />
+    <el-form-item :label="$t('form.score.label')" prop="score">
+      <el-input-number v-model="ruleForm.score" :min="1" name="score" @change="updateCriterias" />
     </el-form-item>
-    <el-form-item :label="$t('form.observation.label')">
-      <el-input v-model="ruleForm.observation" type="textarea" />
+    <el-form-item :label="$t('form.criterias.label')">
+      <el-input v-for="(criteria, index) in ruleForm.criterias" :key="index" v-model="criteria.value" type="text" />
+    </el-form-item>
+    <el-form-item :label="$t('form.observations.label')">
+      <el-input v-model="ruleForm.observations" type="textarea" />
     </el-form-item>
     <el-form-item>
       <el-button type="primary" :loading="isLoading" @click="editTask">
@@ -60,22 +52,16 @@ export default {
       ruleForm: {
         id: 0,
         skillId: '',
-        order: 0,
-        score: 0,
+        order: 1,
+        score: 1,
         name: '',
         goal: '',
         question: '',
-        example: '',
-        criteria: '',
-        observation: '',
+        examples: '',
+        criterias: [{ score: 0, value: '0 = ' }, { score: 1, value: '1 = ' }],
+        observations: '',
       },
       rules: {
-        skillId: [
-          { required: true, message: this.$t('form.skill.rule.required'), trigger: 'blur' },
-        ],
-        order: [
-          { required: true, message: this.$t('form.order.rule.required'), trigger: 'blur' },
-        ],
         score: [
           { required: true, message: this.$t('form.score.rule.required'), trigger: 'blur' },
         ],
@@ -102,6 +88,12 @@ export default {
     this.initFields()
   },
   methods: {
+    updateCriterias () {
+      this.ruleForm.criterias = []
+      for (let i = 0; i <= this.ruleForm.score; i++) {
+        this.ruleForm.criterias.push({ score: i, value: `${i} = ` })
+      }
+    },
     initFields () {
       this.ruleForm.id = this.task.id
       this.ruleForm.skillId = this.task.skillId
@@ -110,9 +102,9 @@ export default {
       this.ruleForm.name = this.task.name
       this.ruleForm.goal = this.task.goal
       this.ruleForm.question = this.task.question
-      this.ruleForm.example = this.task.example
-      this.ruleForm.criteria = this.task.criteria
-      this.ruleForm.observation = this.task.observation
+      this.ruleForm.examples = this.task.examples
+      this.ruleForm.criterias = this.task.criterias
+      this.ruleForm.observations = this.task.observations
     },
     editTask () {
       this.$refs[this.formRef].validate(async (valid) => {
@@ -137,14 +129,14 @@ export default {
       this.ruleForm = {
         id: 0,
         skillId: '',
-        order: 0,
-        score: 0,
+        order: 1,
+        score: 1,
         name: '',
         goal: '',
         question: '',
-        example: '',
-        criteria: '',
-        observation: '',
+        examples: '',
+        criterias: [{ score: 0, value: '0 = ' }, { score: 1, value: '1 = ' }],
+        observations: '',
       }
     },
   },

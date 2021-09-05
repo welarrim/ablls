@@ -40,8 +40,8 @@ export default {
         id: 0,
         childId: '',
         date: '',
-        statut: 'pending',
-        results: {},
+        status: 'pending',
+        results: [],
       },
       rules: {
         childId: [
@@ -74,7 +74,7 @@ export default {
       this.ruleForm.id = this.evaluation.id
       this.ruleForm.childId = this.evaluation.childId
       this.ruleForm.date = this.evaluation.date.seconds ? this.evaluation.date.seconds * 1000 : this.evaluation.date
-      this.ruleForm.statut = this.evaluation.statut
+      this.ruleForm.status = this.evaluation.status
       this.ruleForm.results = this.evaluation.results
     },
     editEvaluation () {
@@ -101,8 +101,8 @@ export default {
         id: 0,
         childId: '',
         date: '',
-        statut: 'pending',
-        results: {},
+        status: 'pending',
+        results: [],
       }
     },
   },

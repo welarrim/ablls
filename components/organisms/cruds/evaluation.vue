@@ -17,10 +17,10 @@
       :formatter="getChild"
     />
     <el-table-column
-      prop="statut"
-      :label="$t('statut')"
+      prop="status"
+      :label="$t('status')"
       sortable
-      :formatter="getStatut"
+      :formatter="getstatus"
     />
     <el-table-column
       fixed="right"
@@ -67,8 +67,8 @@ export default {
       const child = this.$store.getters['childs/byId'](row.childId)
       return child ? `${child.firstname} ${child.lastname}` : ''
     },
-    getStatut (row) {
-      return this.$t(row.statut)
+    getstatus (row) {
+      return this.$t(row.status)
     },
     async edit (scope) {
       const row = scope.row

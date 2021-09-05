@@ -27,10 +27,10 @@
       :formatter="getBirthDate"
     />
     <el-table-column
-      prop="observation"
-      :label="$t('observation')"
+      prop="observations"
+      :label="$t('observations')"
       sortable
-      :formatter="getObservation"
+      :formatter="observationsExist"
     />
     <el-table-column
       fixed="right"
@@ -72,8 +72,8 @@ export default {
       const birthdate = row.birthdate.seconds ? row.birthdate.seconds * 1000 : row.birthdate
       return new Date(birthdate).toLocaleDateString('fr-FR')
     },
-    getObservation (row) {
-      return row.observation ? this.$t('yes') : this.$t('no')
+    observationsExist (row) {
+      return row.observations ? this.$t('yes') : this.$t('no')
     },
     async edit (scope) {
       const row = scope.row

@@ -29,8 +29,8 @@ export default {
       ruleForm: {
         childId: '',
         date: '',
-        statut: 'pending',
-        results: {},
+        status: 'pending',
+        results: [],
       },
       rules: {
         childId: [
@@ -74,8 +74,8 @@ export default {
       this.ruleForm = {
         childId: '',
         date: '',
-        statut: 'pending',
-        results: {},
+        status: 'pending',
+        results: [],
       }
     },
   },

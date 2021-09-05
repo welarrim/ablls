@@ -61,7 +61,7 @@ export const actions = {
         lastname: payload.lastname,
         gender: payload.gender,
         birthdate: payload.birthdate,
-        observation: payload.observation,
+        observations: payload.observations,
       }
       const result = await this.$fire.firestore.collection('childs').add(data)
       data.id = result.id
@@ -77,7 +77,7 @@ export const actions = {
         lastname: payload.lastname,
         gender: payload.gender,
         birthdate: payload.birthdate,
-        observation: payload.observation,
+        observations: payload.observations,
       }
       await this.$fire.firestore.collection('childs').doc(payload.id).set(data)
       data.id = payload.id
