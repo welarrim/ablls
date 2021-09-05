@@ -27,6 +27,9 @@
       label="Opérations"
     >
       <template slot-scope="scope">
+        <el-button v-if="scope.row.status !== 'done'" size="mini" @click="start(scope)">
+          {{ $t('btn.start') }}
+        </el-button>
         <el-button size="mini" @click="$emit('editBtnClicked', scope)">
           {{ $t('btn.edit') }}
         </el-button>
@@ -78,6 +81,10 @@ export default {
       const row = scope.row
       await this.$store.dispatch('evaluations/remove', row)
       this.$toast.success(this.$t('alert.evaluations.delete.success'))
+    },
+    start (scope) {
+      const row = scope.row
+      this.$router.push('/evaluation/' + row.id)
     },
   },
 }

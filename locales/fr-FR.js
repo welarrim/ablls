@@ -146,6 +146,7 @@ export default {
     edit: 'Editer',
     remove: 'Supprimer',
     add: 'Ajouter',
+    start: 'Commencer',
   },
   alert: {
     firebase: {

@@ -40,7 +40,7 @@ export default {
         this.task = nextTask
         return
       }
-      const alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      const alpha = 'ABCDEFGHIJKLMNPQRSTUVWXYZ'
       const index = alpha.indexOf(skillId)
       const nextSkillId = alpha[index + 1]
       nextTask = this.$store.getters['tasks/byId'](nextSkillId + '1')
