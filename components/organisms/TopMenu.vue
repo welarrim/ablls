@@ -21,6 +21,10 @@ export default {
           route: '/',
         },
         {
+          title: 'menu.teams',
+          route: '/team',
+        },
+        {
           title: 'menu.childs',
           route: '/child',
         },

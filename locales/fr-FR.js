@@ -7,6 +7,7 @@ export default {
     tasks: 'Tâches',
     evaluations: 'Evaluations',
     settings: 'Configuration',
+    teams: 'Equipes',
   },
   title: {
     login: 'Se connecter',
@@ -17,6 +18,7 @@ export default {
     evaluations: 'Evaluations',
     settings: 'Configuration',
     result: 'Résultat',
+    teams: 'Equipes',
   },
   link: {
     login: 'Vous avez déjà un compte? Connectez-vous',
@@ -196,6 +198,11 @@ export default {
     delete: {
       confirmation: 'Êtes vous sûr vouloir supprimer cet element?',
     },
+    teams: {
+      delete: {
+        success: 'L\'équipe a été supprimée avec succès',
+      },
+    },
   },
   modal: {
     child: {
@@ -230,6 +237,14 @@ export default {
         title: 'Modifier les informations d\'une évaluation',
       },
     },
+    team: {
+      add: {
+        title: 'Ajouter une équipe',
+      },
+      edit: {
+        title: 'Modifier les informations d\'une équipe',
+      },
+    },
   },
   firstname: 'Prénom',
   lastname: 'Nom',
@@ -245,6 +260,7 @@ export default {
   order: 'Ordre',
   score: 'Score',
   skill: 'Compétence',
+  team: 'Equipe',
   date: 'Date',
   status: 'Etat',
   child: 'Enfant',
