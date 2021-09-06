@@ -18,7 +18,7 @@ export default {
       } else {
         this.$toast.error(this.$t('alert.error.unknown'))
       }
-      console.log(error)
+      console.error(error)
     },
   },
 }

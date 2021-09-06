@@ -1,36 +1,29 @@
 <template>
   <el-table
     v-loading="loading"
-    :data="childs"
-    :default-sort="{prop: 'firstname', order: 'ascending'}"
+    :data="tasks"
+    :default-sort="{prop: 'order', order: 'ascending'}"
   >
     <el-table-column
-      prop="firstname"
-      :label="$t('firstname')"
+      prop="skillId"
+      :label="$t('skill')"
+      sortable
+      :formatter="getSkill"
+    />
+    <el-table-column
+      prop="order"
+      :label="$t('order')"
       sortable
     />
     <el-table-column
-      prop="lastname"
-      :label="$t('lastname')"
+      prop="score"
+      :label="$t('score')"
       sortable
     />
     <el-table-column
-      prop="gender"
-      :label="$t('gender')"
+      prop="name"
+      :label="$t('name')"
       sortable
-      :formatter="getGender"
-    />
-    <el-table-column
-      prop="birthdate"
-      :label="$t('birthdate')"
-      sortable
-      :formatter="getBirthDate"
-    />
-    <el-table-column
-      prop="observations"
-      :label="$t('observations')"
-      sortable
-      :formatter="observationsExist"
     />
     <el-table-column
       fixed="right"
@@ -58,33 +51,31 @@ export default {
     }
   },
   async fetch () {
-    await this.$store.dispatch('childs/fetch')
+    await this.$store.dispatch('tasks/fetch')
+    await this.$store.dispatch('skills/fetch')
     this.loading = false
   },
   computed: {
-    childs () {
-      return this.$store.state.childs.list
+    tasks () {
+      return this.$store.state.tasks.list
+    },
+    skills () {
+      return this.$store.state.skills.list
     },
   },
   methods: {
-    getGender (row) {
-      return this.$t(row.gender)
-    },
-    getBirthDate (row) {
-      const birthdate = row.birthdate.seconds ? row.birthdate.seconds * 1000 : row.birthdate
-      return new Date(birthdate).toLocaleDateString('fr-FR')
-    },
-    observationsExist (row) {
-      return row.observations ? this.$t('yes') : this.$t('no')
+    getSkill (row) {
+      const skill = this.$store.getters['skills/byId'](row.skillId)
+      return skill ? `${skill.letter} - ${skill.name}` : ''
     },
     async edit (scope) {
       const row = scope.row
-      await this.$store.dispatch('childs/edit', row)
+      await this.$store.dispatch('tasks/edit', row)
     },
     async remove (scope) {
       const row = scope.row
-      await this.$store.dispatch('childs/remove', row)
-      this.$toast.success(this.$t('alert.childs.delete.success'))
+      await this.$store.dispatch('tasks/remove', row)
+      this.$toast.success(this.$t('alert.tasks.delete.success'))
     },
   },
 }
