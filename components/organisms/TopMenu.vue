@@ -28,6 +28,18 @@ export default {
           title: 'menu.skills',
           route: '/skill',
         },
+        {
+          title: 'menu.tasks',
+          route: '/task',
+        },
+        {
+          title: 'menu.evaluations',
+          route: '/evaluation',
+        },
+        {
+          title: 'menu.settings',
+          route: '/settings',
+        },
       ],
     }
   },

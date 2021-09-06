@@ -1,4 +1,4 @@
-const seed = require('../seeds/skills.json')
+const seed = require('../seeds/tasks.json')
 
 export const state = () => ({
   list: [],
@@ -24,13 +24,13 @@ export const mutations = {
   UNSET_SELECTED (state) {
     state.selected = null
   },
-  ADD (state, skill) {
-    state.list.push(skill)
+  ADD (state, task) {
+    state.list.push(task)
   },
-  EDIT (state, skill) {
-    const index = state.list.findIndex(row => row.id === skill.id)
+  EDIT (state, task) {
+    const index = state.list.findIndex(row => row.id === task.id)
     if (index > -1) {
-      state.list.splice(index, 1, skill)
+      state.list.splice(index, 1, task)
     }
   },
   REMOVE (state, payload) {
@@ -45,11 +45,11 @@ export const actions = {
   async fetch ({ commit }) {
     const result = []
     try {
-      const snapshot = await this.$fire.firestore.collection('skills').get()
+      const snapshot = await this.$fire.firestore.collection('tasks').get()
       snapshot.forEach((doc) => {
-        const skill = doc.data()
-        skill.id = doc.id
-        result.push(skill)
+        const task = doc.data()
+        task.id = doc.id
+        result.push(task)
       })
       commit('SET_LIST', result)
     } catch (error) {
@@ -59,11 +59,18 @@ export const actions = {
   async add ({ commit }, payload) {
     try {
       const data = {
-        letter: payload.letter,
+        skillId: payload.skillId,
+        order: payload.order,
+        score: payload.score,
         name: payload.name,
+        goal: payload.goal,
+        question: payload.question,
+        examples: payload.examples,
+        criterias: payload.criterias,
+        observations: payload.observations,
       }
-      await this.$fire.firestore.collection('skills').doc(payload.letter).set(data)
-      data.id = payload.letter
+      await this.$fire.firestore.collection('tasks').doc(payload.skillId + payload.order).set(data)
+      data.id = payload.skillId + payload.order
       commit('ADD', data)
     } catch (error) {
       console.error(error)
@@ -72,11 +79,18 @@ export const actions = {
   async edit ({ commit }, payload) {
     try {
       const data = {
-        letter: payload.letter,
+        skillId: payload.skillId,
+        order: payload.order,
+        score: payload.score,
         name: payload.name,
+        goal: payload.goal,
+        question: payload.question,
+        examples: payload.examples,
+        criterias: payload.criterias,
+        observations: payload.observations,
       }
-      await this.$fire.firestore.collection('skills').doc(payload.letter).set(data)
-      data.id = payload.id
+      await this.$fire.firestore.collection('tasks').doc(payload.skillId + payload.order).set(data)
+      data.id = payload.skillId + payload.order
       commit('EDIT', data)
     } catch (error) {
       console.error(error)
@@ -84,7 +98,7 @@ export const actions = {
   },
   async remove ({ commit }, payload) {
     try {
-      await this.$fire.firestore.collection('skills').doc(payload.id).delete()
+      await this.$fire.firestore.collection('tasks').doc(payload.id).delete()
       commit('REMOVE', payload)
     } catch (error) {
       console.error(error)
@@ -92,7 +106,7 @@ export const actions = {
   },
   async clean ({ commit }) {
     try {
-      const snapshot = await this.$fire.firestore.collection('skills').get()
+      const snapshot = await this.$fire.firestore.collection('tasks').get()
       snapshot.forEach((doc) => {
         doc.ref.delete()
       })
@@ -108,12 +122,19 @@ export const actions = {
       const result = []
       seed.forEach((row) => {
         const data = {
-          letter: row.letter,
+          skillId: row.skillId,
+          order: row.order,
+          score: row.score,
           name: row.name,
+          goal: row.goal,
+          question: row.question,
+          examples: row.examples,
+          criterias: row.criterias,
+          observations: row.observations,
         }
-        const ref = this.$fire.firestore.collection('skills').doc(row.letter)
+        const ref = this.$fire.firestore.collection('tasks').doc(row.skillId + row.order)
         batch.set(ref, data)
-        data.id = row.letter
+        data.id = row.skillId + row.order
         result.push(data)
       })
       await batch.commit()

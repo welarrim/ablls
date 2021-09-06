@@ -20,11 +20,11 @@
     <el-form-item :label="$t('form.birthdate.label')" prop="birthdate">
       <el-date-picker v-model="ruleForm.birthdate" type="date" :placeholder="$t('form.birthdate.placeholder')" />
     </el-form-item>
-    <el-form-item :label="$t('form.observation.label')">
-      <el-input v-model="ruleForm.observation" type="textarea" />
+    <el-form-item :label="$t('form.observations.label')">
+      <el-input v-model="ruleForm.observations" type="textarea" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" :loading="isLoading" @click="editChild()">
+      <el-button type="primary" :loading="isLoading" @click="editChild">
         {{ $t('btn.edit') }}
       </el-button>
     </el-form-item>
@@ -52,7 +52,7 @@ export default {
         lastname: '',
         gender: 'boy',
         birthdate: '',
-        observation: '',
+        observations: '',
       },
       rules: {
         firstname: [
@@ -85,7 +85,7 @@ export default {
       this.ruleForm.lastname = this.child.lastname
       this.ruleForm.gender = this.child.gender
       this.ruleForm.birthdate = this.child.birthdate.seconds ? this.child.birthdate.seconds * 1000 : this.child.birthdate
-      this.ruleForm.observation = this.child.observation
+      this.ruleForm.observations = this.child.observations
     },
     editChild () {
       this.$refs[this.formRef].validate(async (valid) => {
@@ -113,7 +113,7 @@ export default {
         lastname: '',
         gender: 'boy',
         birthdate: '',
-        observation: '',
+        observations: '',
       }
     },
   },

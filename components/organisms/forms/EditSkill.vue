@@ -5,14 +5,11 @@
     :model="ruleForm"
     :rules="rules"
   >
-    <el-form-item :label="$t('form.letter.label')" prop="letter">
-      <el-input v-model="ruleForm.letter" type="text" name="letter" autofocus />
-    </el-form-item>
     <el-form-item :label="$t('form.name.label')" prop="name">
       <el-input v-model="ruleForm.name" type="text" name="name" />
     </el-form-item>
     <el-form-item>
-      <el-button type="primary" :loading="isLoading" @click="editSkill()">
+      <el-button type="primary" :loading="isLoading" @click="editSkill">
         {{ $t('btn.edit') }}
       </el-button>
     </el-form-item>
@@ -40,9 +37,6 @@ export default {
         name: '',
       },
       rules: {
-        letter: [
-          { required: true, message: this.$t('form.letter.rule.required'), trigger: 'blur' },
-        ],
         name: [
           { required: true, message: this.$t('form.name.rule.required'), trigger: 'blur' },
         ],
