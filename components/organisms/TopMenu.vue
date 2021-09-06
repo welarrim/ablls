@@ -36,6 +36,10 @@ export default {
           title: 'menu.evaluations',
           route: '/evaluation',
         },
+        {
+          title: 'menu.settings',
+          route: '/settings',
+        },
       ],
     }
   },

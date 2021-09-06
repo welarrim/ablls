@@ -1,3 +1,5 @@
+const seed = require('../seeds/skills.json')
+
 export const state = () => ({
   list: [],
   selected: null,
@@ -84,6 +86,38 @@ export const actions = {
     try {
       await this.$fire.firestore.collection('skills').doc(payload.id).delete()
       commit('REMOVE', payload)
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  async clean ({ commit }) {
+    try {
+      const snapshot = await this.$fire.firestore.collection('skills').get()
+      snapshot.forEach((doc) => {
+        doc.ref.delete()
+      })
+      commit('UNSET_LIST')
+      commit('UNSET_SELECTED')
+    } catch (error) {
+      console.error(error)
+    }
+  },
+  async seed ({ commit }) {
+    try {
+      const batch = this.$fire.firestore.batch()
+      const result = []
+      seed.forEach((row) => {
+        const data = {
+          letter: row.letter,
+          name: row.name,
+        }
+        const ref = this.$fire.firestore.collection('skills').doc(row.letter)
+        batch.set(ref, data)
+        data.id = row.letter
+        result.push(data)
+      })
+      await batch.commit()
+      commit('SET_LIST', result)
     } catch (error) {
       console.error(error)
     }

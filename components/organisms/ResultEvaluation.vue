@@ -2,7 +2,7 @@
   <div>
     <h2>{{ child.firstname }} {{ child.lastname }}</h2>
     <h3>{{ $t('date') }} : {{ getEvaluationDate }}</h3>
-    <div>
+    <div class="result-container">
       <div v-for="skill in skills" :key="skill.id" class="skill-column">
         <h4 class="title">
           {{ skill.name }}
@@ -74,6 +74,7 @@ export default {
 .skill-column {
   display: flex;
   flex-direction: column-reverse;
+  margin: 0 5px;
 }
 .skill-column > .title {
   text-align: center;
@@ -81,5 +82,8 @@ export default {
 .skill-column .task-title {
   padding-right: 10px;
   text-align: right;
+}
+.result-container {
+  display: flex;
 }
 </style>

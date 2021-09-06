@@ -24,7 +24,7 @@
     />
     <el-table-column
       fixed="right"
-      label="Opérations"
+      :label="$t('operations')"
     >
       <template slot-scope="scope">
         <el-button v-if="scope.row.status !== 'done'" size="mini" @click="start(scope)">
@@ -36,9 +36,11 @@
         <el-button size="mini" @click="$emit('editBtnClicked', scope)">
           {{ $t('btn.edit') }}
         </el-button>
-        <el-button size="mini" type="danger" @click="remove(scope)">
-          {{ $t('btn.remove') }}
-        </el-button>
+        <el-popconfirm :title="$t('alert.delete.confirmation')" :confirm-button-text="$t('yes')" :cancel-button-text="$t('no')" @confirm="remove(scope)">
+          <el-button slot="reference" size="mini" type="danger">
+            {{ $t('btn.remove') }}
+          </el-button>
+        </el-popconfirm>
       </template>
     </el-table-column>
   </el-table>

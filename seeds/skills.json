@@ -1,0 +1,102 @@
+[
+  {
+    "letter": "A",
+    "name": "Coopération & efficacité de l'agent renforçateur"
+  },
+  {
+    "letter": "B",
+    "name": "Performances visuelles"
+  },
+  {
+    "letter": "C",
+    "name": "Langue réceptif"
+  },
+  {
+    "letter": "D",
+    "name": "Imitation motrice"
+  },
+  {
+    "letter": "E",
+    "name": "Imitation vocale"
+  },
+  {
+    "letter": "F",
+    "name": "Demandes"
+  },
+  {
+    "letter": "G",
+    "name": "Dénomination"
+  },
+  {
+    "letter": "H",
+    "name": "Intraverbaux"
+  },
+  {
+    "letter": "I",
+    "name": "Vocalisations spontanées"
+  },
+  {
+    "letter": "J",
+    "name": "Syntaxe et grammaire"
+  },
+  {
+    "letter": "K",
+    "name": "Jeux et activités de loisirs"
+  },
+  {
+    "letter": "L",
+    "name": "Intractions sociales"
+  },
+  {
+    "letter": "M",
+    "name": "Consignes de groupe"
+  },
+  {
+    "letter": "N",
+    "name": "Routines de classe"
+  },
+  {
+    "letter": "P",
+    "name": "Réponses généralisées"
+  },
+  {
+    "letter": "Q",
+    "name": "Lecture"
+  },
+  {
+    "letter": "R",
+    "name": "Mathématiques"
+  },
+  {
+    "letter": "S",
+    "name": "Ecritures"
+  },
+  {
+    "letter": "T",
+    "name": "Orthographier & Epeler"
+  },
+  {
+    "letter": "U",
+    "name": "Habillage"
+  },
+  {
+    "letter": "V",
+    "name": "Alimentation"
+  },
+  {
+    "letter": "W",
+    "name": "Hygiène"
+  },
+  {
+    "letter": "X",
+    "name": "Propreté"
+  },
+  {
+    "letter": "Y",
+    "name": "Motricité globale"
+  },
+  {
+    "letter": "Z",
+    "name": "Motricité fine"
+  }
+]

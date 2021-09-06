@@ -6,6 +6,7 @@ export default {
     skills: 'Compétences',
     tasks: 'Tâches',
     evaluations: 'Evaluations',
+    settings: 'Configuration',
   },
   title: {
     login: 'Se connecter',
@@ -14,6 +15,7 @@ export default {
     skills: 'Compétences',
     tasks: 'Tâches',
     evaluations: 'Evaluations',
+    settings: 'Configuration',
     result: 'Résultat',
   },
   link: {
@@ -187,6 +189,13 @@ export default {
         success: 'L\'évaluation a été supprimée avec succès',
       },
     },
+    seeds: {
+      confirmation: 'Êtes vous sûr vouloir lancer le seed?',
+      complete: 'Le seed a terminé avec succès',
+    },
+    delete: {
+      confirmation: 'Êtes vous sûr vouloir supprimer cet element?',
+    },
   },
   modal: {
     child: {
@@ -249,4 +258,8 @@ export default {
     criterias: 'Critères',
     observations: 'Observations',
   },
+  operations: 'Opérations',
+  seeds: 'Seeds',
+  evaluation: 'Evaluation',
+  users: 'Utilisateurs',
 }
