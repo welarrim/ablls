@@ -24,8 +24,11 @@
     <el-radio v-for="criteria in task.criterias" :key="criteria.score" v-model="score" :label="criteria.score">
       {{ criteria.value }}
     </el-radio>
-    <el-button type="success" @click="submitAnswer">
-      {{ $t('next') }}
+    <el-button type="success" @click="storeAnswerAndNext">
+      {{ $t('btn.save_and_next') }}
+    </el-button>
+    <el-button type="success" @click="storeAnswerAndSummary">
+      {{ $t('btn.save_and_summary') }}
     </el-button>
   </div>
 </template>
@@ -44,8 +47,11 @@ export default {
     }
   },
   methods: {
-    submitAnswer () {
-      this.$emit('answerSubmitted', this.score)
+    storeAnswerAndNext () {
+      this.$emit('storeAnswerAndNext', this.score)
+    },
+    storeAnswerAndSummary () {
+      this.$emit('storeAnswerAndSummary', this.score)
     },
   },
 }

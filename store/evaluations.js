@@ -7,6 +7,9 @@ export const getters = {
   byId: state => (id) => {
     return state.list.find(row => row.id === id)
   },
+  byChildId: state => (childId) => {
+    return state.list.filter(row => row.childId === childId)
+  },
 }
 
 export const mutations = {

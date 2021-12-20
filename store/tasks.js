@@ -9,6 +9,15 @@ export const getters = {
   byId: state => (id) => {
     return state.list.find(row => row.id === id)
   },
+  bySkillId: state => (skillId) => {
+    return state.list.filter(row => row.skillId === skillId)
+  },
+  groupBySkill: (state) => {
+    return state.list.reduce((r, a) => {
+      r[a.skillId] = [...r[a.skillId] || [], a]
+      return r
+    }, {})
+  },
 }
 
 export const mutations = {

@@ -37,6 +37,9 @@
       :label="$t('operations')"
     >
       <template slot-scope="scope">
+        <el-button size="mini" @click="$router.push(`/child/${scope.row.id}/result`)">
+          {{ $t('btn.result') }}
+        </el-button>
         <el-button size="mini" @click="$emit('editBtnClicked', scope)">
           {{ $t('btn.edit') }}
         </el-button>

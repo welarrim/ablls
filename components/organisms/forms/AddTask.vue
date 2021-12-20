@@ -83,10 +83,16 @@ export default {
     },
   },
   methods: {
-    updateCriterias () {
-      this.ruleForm.criterias = []
-      for (let i = 0; i <= this.ruleForm.score; i++) {
-        this.ruleForm.criterias.push({ score: i, value: `${i} = ` })
+    updateCriterias (currentValue, oldValue) {
+      const diff = currentValue - oldValue
+      if (diff > 0) {
+        for (let i = oldValue + 1; i <= currentValue; i++) {
+          this.ruleForm.criterias.push({ score: i, value: `${i} = ` })
+        }
+      } else if (diff < 0) {
+        for (let i = oldValue; i >= currentValue; i--) {
+          this.ruleForm.criterias.splice(i + 1, 1)
+        }
       }
     },
     addTask () {

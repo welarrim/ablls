@@ -27,11 +27,8 @@
       :label="$t('operations')"
     >
       <template slot-scope="scope">
-        <el-button v-if="scope.row.status !== 'done'" size="mini" @click="start(scope)">
+        <el-button size="mini" @click="start(scope)">
           {{ $t('btn.start') }}
-        </el-button>
-        <el-button v-else size="mini" @click="result(scope)">
-          {{ $t('btn.result') }}
         </el-button>
         <el-button size="mini" @click="$emit('editBtnClicked', scope)">
           {{ $t('btn.edit') }}
@@ -89,7 +86,7 @@ export default {
     },
     start (scope) {
       const row = scope.row
-      this.$router.push('/evaluation/' + row.id)
+      this.$router.push('/evaluation/' + row.id + '/summary')
     },
     result (scope) {
       const row = scope.row

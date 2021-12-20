@@ -46,5 +46,53 @@
       }
     ],
     "observations": ""
+  },
+  {
+    "skillId": "B",
+    "order": 1,
+    "score": 2,
+    "name": "Prendre l'AR parmi deux objets",
+    "goal": "Quand on propose un choix parmi un item (ou activité) renforçant et un non renforçant, l'enfant prend l'AR.",
+    "question": "Est-ce que l'enfant prend l'AR?",
+    "examples": "M&M's et chaussures, il prend les M&M's",
+    "criterias": [
+      {
+        "score": 0,
+        "value": "0 - Jamais"
+      },
+      {
+        "score": 1,
+        "value": "1 - Pas à chaque fois ou plus lentement"
+      },
+      {
+        "score": 2,
+        "value": "2 - Il le prend dans les 3 secondes à chaque fois"
+      }
+    ],
+    "observations": ""
+  },
+  {
+    "skillId": "B",
+    "order": 2,
+    "score": 2,
+    "name": "Prendre l'AR parmi deux objets",
+    "goal": "Quand on propose un choix parmi un item (ou activité) renforçant et un non renforçant, l'enfant prend l'AR.",
+    "question": "Est-ce que l'enfant prend l'AR?",
+    "examples": "M&M's et chaussures, il prend les M&M's",
+    "criterias": [
+      {
+        "score": 0,
+        "value": "0 - Jamais"
+      },
+      {
+        "score": 1,
+        "value": "1 - Pas à chaque fois ou plus lentement"
+      },
+      {
+        "score": 2,
+        "value": "2 - Il le prend dans les 3 secondes à chaque fois"
+      }
+    ],
+    "observations": ""
   }
 ]

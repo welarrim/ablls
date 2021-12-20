@@ -153,6 +153,8 @@ export default {
     add: 'Ajouter',
     start: 'Commencer',
     result: 'Résultat',
+    save_and_next: 'Enregistrer et continuer',
+    save_and_summary: 'Enregistrer et retourner au sommaire',
   },
   alert: {
     firebase: {
@@ -278,4 +280,5 @@ export default {
   seeds: 'Seeds',
   evaluation: 'Evaluation',
   users: 'Utilisateurs',
+  not_passed: 'Non passé',
 }
